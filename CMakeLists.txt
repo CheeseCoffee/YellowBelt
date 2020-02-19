@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(YellowBelt FirstWeek/Temperature/temperature.cpp)
+add_executable(YellowBelt FirstWeek/BlocksWeight/blocks_weight.cpp)
