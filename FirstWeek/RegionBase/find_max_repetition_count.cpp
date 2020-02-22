@@ -26,7 +26,7 @@ bool EqualRegion(const Region& lhs,const Region& rhs){
     return true;
 }
 
-int FindMaxRepetitionCount(const vector<Region>& regions){
+int FindMaxRepetitionCount1(const vector<Region>& regions){
     int sum=0;
     int compare=0;
     for(int i=0;i<regions.size();i++){
@@ -40,6 +40,38 @@ int FindMaxRepetitionCount(const vector<Region>& regions){
     }
     return compare+1;
 };
+
+int FindMaxRepetitionCount(const vector<Region>& regions){
+    if(regions.size()==0){return 0;}
+    map<Region,int>mymap;
+    int max=0;
+    for(const Region& region:regions){
+        if(mymap.count(region)==0){
+            mymap[region]=1;
+        }else{
+            mymap[region]++;
+        }
+        if(mymap[region]>max){max=mymap[region];}
+    }
+    return max;
+};
+
+bool operator<(const Region& lhs,const Region& rhs){
+    if(tie(lhs.std_name,lhs.parent_std_name,lhs.population)<tie(rhs.std_name,rhs.parent_std_name,rhs.population)){return true;}
+    if(lhs.names.count(Lang::DE)!=0){
+        if(rhs.names.count(Lang::DE)==0){return true;}
+        if(lhs.names.at(Lang::DE)<rhs.names.at(Lang::DE)){ return true;}
+    }
+    if(lhs.names.count(Lang::FR)!=0){
+        if(rhs.names.count(Lang::FR)==0){return true;}
+        if(lhs.names.at(Lang::FR)<rhs.names.at(Lang::FR)){ return true;}
+    }
+    if(lhs.names.count(Lang::IT)!=0){
+        if(rhs.names.count(Lang::IT)==0){return true;}
+        if(lhs.names.at(Lang::IT)<rhs.names.at(Lang::IT)){ return true;}
+    }
+    return false;
+}
 
 int main() {
     cout << FindMaxRepetitionCount({
