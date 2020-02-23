@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(YellowBelt FirstWeek/RegionBase/find_max_repetition_count.cpp)
+add_executable(YellowBelt FirstWeek/TeamTasks/team_tasks.cpp)
