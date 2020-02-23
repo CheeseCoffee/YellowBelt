@@ -5,6 +5,8 @@
 #include<vector>
 #include<map>
 #include <tuple>
+#include <string>
+#include <algorithm>
 using namespace std;
 enum class Lang {
     DE, FR, IT
@@ -16,7 +18,7 @@ struct Region {
     map<Lang, string> names;
     int64_t population;
 };
-
+/*
 bool EqualRegion(const Region& lhs,const Region& rhs){
     if(tie(lhs.std_name,lhs.parent_std_name,lhs.population)!=tie(rhs.std_name,rhs.parent_std_name,rhs.population)){return false;}
     if(lhs.names.size()!=rhs.names.size()){return false;}
@@ -57,7 +59,8 @@ int FindMaxRepetitionCount(const vector<Region>& regions){
 };
 
 bool operator<(const Region& lhs,const Region& rhs){
-    if(tie(lhs.std_name,lhs.parent_std_name,lhs.population)<tie(rhs.std_name,rhs.parent_std_name,rhs.population)){return true;}
+
+    if(tie(lhs.std_name,lhs.parent_std_name,lhs.population)!=tie(rhs.std_name,rhs.parent_std_name,rhs.population)){return tie(lhs.std_name,lhs.parent_std_name,lhs.population)<tie(rhs.std_name,rhs.parent_std_name,rhs.population);}
     if(lhs.names.count(Lang::DE)!=0){
         if(rhs.names.count(Lang::DE)==0){return true;}
         if(lhs.names.at(Lang::DE)<rhs.names.at(Lang::DE)){ return true;}
@@ -71,6 +74,20 @@ bool operator<(const Region& lhs,const Region& rhs){
         if(lhs.names.at(Lang::IT)<rhs.names.at(Lang::IT)){ return true;}
     }
     return false;
+}*/
+
+bool operator<(const Region& lhs, const Region& rhs) {
+    return tie(lhs.std_name, lhs.parent_std_name, lhs.names, lhs.population) <
+           tie(rhs.std_name, rhs.parent_std_name, rhs.names, rhs.population);
+}
+
+int FindMaxRepetitionCount(const vector<Region>& regions) {
+    int result = 0;
+    map<Region, int> repetition_count;
+    for (const Region& region : regions) {
+        result = max(result, ++repetition_count[region]);
+    }
+    return result;
 }
 
 int main() {
