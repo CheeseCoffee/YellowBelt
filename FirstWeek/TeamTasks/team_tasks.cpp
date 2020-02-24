@@ -20,15 +20,22 @@ using TasksInfo = map<TaskStatus, int>;
 class TeamTasks {
 public:
     // Получить статистику по статусам задач конкретного разработчика
-    const TasksInfo& GetPersonTasksInfo(const string& person) const;
+    const TasksInfo& GetPersonTasksInfo(const string& person) const{
+        return data.at(person);
+    };
 
     // Добавить новую задачу (в статусе NEW) для конкретного разработчитка
-    void AddNewTask(const string& person);
+    void AddNewTask(const string& person){
+        data[person][TaskStatus::NEW]++;
+    };
 
     // Обновить статусы по данному количеству задач конкретного разработчика,
     // подробности см. ниже
-    tuple<TasksInfo, TasksInfo> PerformPersonTasks(
-            const string& person, int task_count);
+    tuple<TasksInfo, TasksInfo> PerformPersonTasks(const string& person, int task_count){
+
+    };
+private:
+    map<string,TasksInfo>data;
 };
 // Принимаем словарь по значению, чтобы иметь возможность
 // обращаться к отсутствующим ключам с помощью [] и получать 0,
@@ -52,7 +59,7 @@ int main() {
     cout << "Ivan's tasks: ";
     PrintTasksInfo(tasks.GetPersonTasksInfo("Ivan"));
 
-    TasksInfo updated_tasks, untouched_tasks;
+    /*TasksInfo updated_tasks, untouched_tasks;
 
     tie(updated_tasks, untouched_tasks) =
             tasks.PerformPersonTasks("Ivan", 2);
@@ -66,7 +73,7 @@ int main() {
     cout << "Updated Ivan's tasks: ";
     PrintTasksInfo(updated_tasks);
     cout << "Untouched Ivan's tasks: ";
-    PrintTasksInfo(untouched_tasks);
+    PrintTasksInfo(untouched_tasks);*/
 
     return 0;
 }
