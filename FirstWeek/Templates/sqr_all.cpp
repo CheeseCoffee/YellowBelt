@@ -7,9 +7,46 @@
 #include <utility>
 using namespace std;
 
-template <typename T> T Sqr(T v){
-    return v*v;
+template <typename T>
+T Sqr(const T& x);
+
+template <typename T>
+vector<T> Sqr(const vector<T>& vi);
+
+template <typename First,typename Second>
+pair<First,Second> Sqr(const pair<First,Second>& p);
+
+template <typename Key, typename Value>
+map<Key,Value> Sqr(const map<Key,Value>& m);
+
+template <typename T>
+vector<T> Sqr(const vector<T>& vi){
+    vector<T>vi1;
+    for(const T&i:vi){
+        vi1.push_back(Sqr(i));
+    }
+    return vi1;
+};
+
+template <typename Key, typename Value>
+map<Key,Value> Sqr(const map<Key,Value>& m){
+    map<Key,Value>m1;
+    for(const auto& i:m){
+        m1[i.first]=Sqr(i.second);
+    }
+    return m1;
+};
+
+template <typename First,typename Second>
+pair<First,Second> Sqr(const pair<First,Second>& p){
+    return make_pair(Sqr(p.first),Sqr(p.second));
 }
+
+template<typename T>
+T Sqr(const T &x) {
+    return x*x;
+};
+
 
 int main(){
     // Пример вызова функции
