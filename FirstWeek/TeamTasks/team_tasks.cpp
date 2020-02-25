@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include <map>
+#include <algorithm>
 
 using namespace std;
 // Перечислимый тип для статуса задачи
@@ -32,7 +33,44 @@ public:
     // Обновить статусы по данному количеству задач конкретного разработчика,
     // подробности см. ниже
     tuple<TasksInfo, TasksInfo> PerformPersonTasks(const string& person, int task_count){
-
+        TasksInfo old=data[person];
+        TasksInfo untouched=data[person];
+        if(untouched[TaskStatus::NEW]==0){untouched.erase(TaskStatus::NEW);}
+        if(untouched[TaskStatus::IN_PROGRESS]==0){untouched.erase(TaskStatus::IN_PROGRESS);}
+        if(untouched[TaskStatus::TESTING]==0){untouched.erase(TaskStatus::TESTING);}
+        untouched.erase(TaskStatus::DONE);
+        TasksInfo updated;
+        for(int i=0;i<old[TaskStatus::NEW];i++){
+            if(task_count>0){
+                task_count--;
+                data[person][TaskStatus::NEW]--;
+                untouched[TaskStatus::NEW]--;
+                if(untouched[TaskStatus::NEW]==0){untouched.erase(TaskStatus::NEW);}
+                data[person][TaskStatus::IN_PROGRESS]++;
+                updated[TaskStatus::IN_PROGRESS]++;
+            }
+        }
+        for(int i=0;i<old[TaskStatus::IN_PROGRESS];i++){
+            if(task_count>0){
+                task_count--;
+                data[person][TaskStatus::IN_PROGRESS]--;
+                untouched[TaskStatus::IN_PROGRESS]--;
+                if(untouched[TaskStatus::IN_PROGRESS]==0){untouched.erase(TaskStatus::IN_PROGRESS);}
+                data[person][TaskStatus::TESTING]++;
+                updated[TaskStatus::TESTING]++;
+            }
+        }
+        for(int i=0;i<old[TaskStatus::TESTING];i++){
+            if(task_count>0){
+                task_count--;
+                data[person][TaskStatus::TESTING]--;
+                untouched[TaskStatus::TESTING]--;
+                if(untouched[TaskStatus::TESTING]==0){untouched.erase(TaskStatus::TESTING);}
+                data[person][TaskStatus::DONE]++;
+                updated[TaskStatus::DONE]++;
+            }
+        }
+        return tie(updated,untouched);
     };
 private:
     map<string,TasksInfo>data;
@@ -59,7 +97,7 @@ int main() {
     cout << "Ivan's tasks: ";
     PrintTasksInfo(tasks.GetPersonTasksInfo("Ivan"));
 
-    /*TasksInfo updated_tasks, untouched_tasks;
+    TasksInfo updated_tasks, untouched_tasks;
 
     tie(updated_tasks, untouched_tasks) =
             tasks.PerformPersonTasks("Ivan", 2);
@@ -73,7 +111,7 @@ int main() {
     cout << "Updated Ivan's tasks: ";
     PrintTasksInfo(updated_tasks);
     cout << "Untouched Ivan's tasks: ";
-    PrintTasksInfo(untouched_tasks);*/
+    PrintTasksInfo(untouched_tasks);
 
     return 0;
 }
