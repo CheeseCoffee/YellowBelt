@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(YellowBelt FirstWeek/Templates/sqr_all.cpp)
+add_executable(YellowBelt FirstWeek/Templates/element_reference.cpp)
