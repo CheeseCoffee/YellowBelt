@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(YellowBelt FirstWeek/Templates/element_reference.cpp)
+add_executable(YellowBelt SecondWeek/UsingUnitTesting/starter.cpp)
