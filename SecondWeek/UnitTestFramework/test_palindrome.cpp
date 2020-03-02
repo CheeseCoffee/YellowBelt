@@ -97,63 +97,39 @@ private:
     int fail_count = 0;
 };
 
-/*class Rational {
-public:
-    // Вы можете вставлять сюда различные реализации,
+void Test(){
+    Assert(IsPalindrom(""),"null");
+    Assert(IsPalindrom("a"),"onesymbol");
+    Assert(IsPalindrom(" aec b cea "),"spaces");
+    Assert(IsPalindrom("abcba"),"normal");
+    Assert(!IsPalindrom("baaaaaaaaaaaaaaac"),"borders");
+    Assert(!IsPalindrom("baaaaaabdaaaaaab"),"middle1");
+    Assert(!IsPalindrom("baaaaaaacbaaaaaab"),"middle2");
+    Assert(!IsPalindrom("aaaaaaaaaaaaaaaaaaab"),"last1");
+    Assert(!IsPalindrom("aaaaaaaaaaaaaaaaaaaab"),"last2");
+    Assert(!IsPalindrom("aaaaaaaaaaaaaaaaaaa "),"last3");
+    Assert(!IsPalindrom("aaaaaaaaaaaaaaaaaaaa "),"last4");
+    Assert(!IsPalindrom(" aaaaaaaaaaaaaaaaaaa"),"first1");
+    Assert(!IsPalindrom(" aaaaaaaaaaaaaaaaaaaa"),"first2");
+    Assert(!IsPalindrom("baaaaaaaaaaaaaaaaaaa"),"first3");
+    Assert(!IsPalindrom("baaaaaaaaaaaaaaaaaaaa"),"first4");
+    Assert(!IsPalindrom("aea b baea"),"spaces4");
+    Assert(!IsPalindrom("aea b aeb"),"spaces3");
+    Assert(!IsPalindrom("aea b beb"),"spaces5");
+    Assert(!IsPalindrom(" aec b  cea "),"spaces2");
+    Assert(!IsPalindrom("ab"),"spaces2");
+    Assert(!IsPalindrom("Aa"),"capital");
+}
+
+/*bool IsPalindrom(const string& str) {
+    // Вы можете вставлять сюда различные реализации функции,
     // чтобы проверить, что ваши тесты пропускают корректный код
     // и ловят некорректный
-
-    Rational();
-    Rational(int numerator, int denominator) {
-    }
-
-    int Numerator() const {
-    }
-
-    int Denominator() const {
-    }
-};*/
-
-void DefaultConstructorTest(){
-    Rational r;
-    AssertEqual(r.Denominator(),1);
-    AssertEqual(r.Numerator(),0);
-}
-
-void SimplifyTest(){
-    Rational r(4,6);
-    AssertEqual(r.Denominator(),3);
-    AssertEqual(r.Numerator(),2);
-}
-
-void NegativeTest(){
-    Rational r1(-4,6);
-    AssertEqual(r1.Denominator(),3);
-    AssertEqual(r1.Numerator(),-2);
-    Rational r2(4,-6);
-    AssertEqual(r2.Denominator(),3);
-    AssertEqual(r2.Numerator(),-2);
-}
-
-void PositiveTest(){
-    Rational r(-4,-6);
-    AssertEqual(r.Denominator(),3);
-    AssertEqual(r.Numerator(),2);
-}
-
-void ZeroTest(){
-    Rational r(0,32);
-    AssertEqual(r.Denominator(),1);
-    AssertEqual(r.Numerator(),0);
-}
+}*/
 
 int main() {
     TestRunner runner;
-    runner.RunTest(DefaultConstructorTest,"DefaultConstructorTest");
-    runner.RunTest(SimplifyTest,"SimplifyTest");
-    runner.RunTest(NegativeTest,"NegativeTest");
-    runner.RunTest(PositiveTest,"PositiveTest");
-    runner.RunTest(ZeroTest,"ZeroTest");
+    runner.RunTest(Test,"Test");
     // добавьте сюда свои тесты
     return 0;
 }
