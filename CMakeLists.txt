@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(YellowBelt SecondWeek/UnitTestFramework/test_rational.cpp)
+add_executable(YellowBelt SecondWeek/UnitTestFramework/test_palindrome.cpp)

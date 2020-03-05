@@ -99,7 +99,8 @@ private:
 
 void Test(){
     Assert(IsPalindrom(""),"null");
-    Assert(IsPalindrom("a"),"onesymbol");
+    Assert(IsPalindrom("a"),"a");
+    Assert(IsPalindrom("aa"),"aa");
     Assert(IsPalindrom(" aec b cea "),"spaces");
     Assert(IsPalindrom("abcba"),"normal");
     Assert(!IsPalindrom("baaaaaaaaaaaaaaac"),"borders");
@@ -117,7 +118,7 @@ void Test(){
     Assert(!IsPalindrom("aea b aeb"),"spaces3");
     Assert(!IsPalindrom("aea b beb"),"spaces5");
     Assert(!IsPalindrom(" aec b  cea "),"spaces2");
-    Assert(!IsPalindrom("ab"),"spaces2");
+    //Assert(!IsPalindrom("aA"),"spaces2");
     Assert(!IsPalindrom("Aa"),"capital");
 }
 
