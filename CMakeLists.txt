@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(YellowBelt ThirdWeek/H_function/main.cpp)
+add_executable(YellowBelt ThirdWeek/H_class/main.cpp ThirdWeek/H_class/phone_number.cpp)

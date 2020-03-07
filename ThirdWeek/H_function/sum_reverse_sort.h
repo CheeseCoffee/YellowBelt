@@ -5,8 +5,10 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <algorithm>
-#include "sum_reverse_sort.cpp"
+
+using namespace std;
+
 int Sum(int x, int y);
-std::string Reverse(std::string s);
-void Sort(std::vector<int>& nums);
+string Reverse(string s);
+void Sort(vector<int>& nums);
+
