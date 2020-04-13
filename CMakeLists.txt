@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(YellowBelt 4thWeek/GreaterElement/find_greater_element.cpp)
+add_executable(YellowBelt 4thWeek/SplitIntoWords/split_into_words.cpp)

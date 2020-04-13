@@ -19,7 +19,7 @@ vector<T> FindGreaterElements(const set<T>& elements, const T& border){
 }
 
 int main() {
-    for (int x : FindGreaterElements(set<int>{1, 5, 7, 8}, 5)) {
+    for (int x : FindGreaterElements(set<int>{1, 7, 5, 8}, 5)) {
         cout << x << " ";
     }
     cout << endl;
