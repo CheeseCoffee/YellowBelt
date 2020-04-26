@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 project(YellowBelt)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
-add_executable(YellowBelt 4thWeek/SplitIntoWords/split_into_words.cpp)
+add_executable(YellowBelt 4thWeek/RemoveDuplicates/remove_duplicates.cpp)
