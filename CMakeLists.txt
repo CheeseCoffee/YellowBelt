@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(YellowBelt 4thWeek/RemoveDuplicates/remove_duplicates.cpp)
+add_executable(YellowBelt 4thWeek/print_stats.cpp)
