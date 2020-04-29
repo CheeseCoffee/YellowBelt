@@ -1,7 +1,7 @@
 //
 // Created by Akbar on 27.04.2020.
 //
-
+/*
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -32,27 +32,25 @@ int ComputeMedianAge(InputIt range_begin, InputIt range_end) {
                 return lhs.age < rhs.age;
             }
     );
-    return middle->age;
-}
-
+    return middle->age;*/
 void PrintStats(vector<Person> persons){
-    cout<<ComputeMedianAge(persons.begin(),persons.end())<<endl;
+    cout<<"Median age = "<<ComputeMedianAge(persons.begin(),persons.end())<<endl;
     auto it=partition(persons.begin(),persons.end(),[](const Person& person){ return person.gender==Gender::FEMALE;});
-    cout<<ComputeMedianAge(persons.begin(),it)<<endl;
+    cout<<"Median age for females = "<<ComputeMedianAge(persons.begin(),it)<<endl;
     it=partition(persons.begin(),persons.end(),[](const Person& person){ return person.gender==Gender::MALE;});
-    cout<<ComputeMedianAge(persons.begin(),it)<<endl;
+    cout<<"Median age for males = "<<ComputeMedianAge(persons.begin(),it)<<endl;
     it=partition(persons.begin(),persons.end(),[](const Person& person){ return person.gender==Gender::FEMALE && person.is_employed==1;});
-    cout<<ComputeMedianAge(persons.begin(),it)<<endl;
+    cout<<"Median age for employed females = "<<ComputeMedianAge(persons.begin(),it)<<endl;
     it=partition(persons.begin(),persons.end(),[](const Person& person){ return person.gender==Gender::FEMALE && person.is_employed==0;});
-    cout<<ComputeMedianAge(persons.begin(),it)<<endl;
+    cout<<"Median age for unemployed females = "<<ComputeMedianAge(persons.begin(),it)<<endl;
     it=partition(persons.begin(),persons.end(),[](const Person& person){ return person.gender==Gender::MALE && person.is_employed==1;});
-    cout<<ComputeMedianAge(persons.begin(),it)<<endl;
+    cout<<"Median age for employed males = "<<ComputeMedianAge(persons.begin(),it)<<endl;
     it=partition(persons.begin(),persons.end(),[](const Person& person){ return person.gender==Gender::MALE && person.is_employed==0;});
-    cout<<ComputeMedianAge(persons.begin(),it)<<endl;
+    cout<<"Median age for unemployed males = "<<ComputeMedianAge(persons.begin(),it);
 };
 
 int main() {
-    vector<Person> persons = {
+    /*vector<Person> persons = {
             {31, Gender::MALE, false},
             {40, Gender::FEMALE, true},
             {24, Gender::MALE, true},
@@ -61,7 +59,15 @@ int main() {
             {78, Gender::MALE, false},
             {10, Gender::FEMALE, false},
             {55, Gender::MALE, true},
-    };
-    PrintStats(persons);
+    };*/
+    int N,x,y;
+    bool z;
+    cin>>N;
+    vector<Person>pers;
+    for(int i=0;i<N;i++){
+        cin>>x>>y>>z;
+        pers.push_back({x, static_cast<Gender>(y),z});
+    }
+    PrintStats(pers);
     return 0;
 }
