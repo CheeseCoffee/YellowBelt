@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(YellowBelt 4thWeek/print_stats.cpp)
+add_executable(YellowBelt 4thWeek/merge_sort_div3.cpp)
