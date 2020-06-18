@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(YellowBelt 4thWeek/find_nearest_element.cpp)
+add_executable(YellowBelt 4thWeek/person_names.cpp)
