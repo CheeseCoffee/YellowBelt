@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(YellowBelt 4thWeek/person_names.cpp)
+add_executable(YellowBelt 4thWeek/find_starts_with_string.cpp)
