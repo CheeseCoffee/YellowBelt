@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(YellowBelt 4thWeek/build_expression.cpp)
+add_executable(YellowBelt 4thWeek/build_expression_without_redundant_brackets.cpp)
