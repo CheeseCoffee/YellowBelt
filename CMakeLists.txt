@@ -3,4 +3,4 @@ project(YellowBelt)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(YellowBelt 5thWeek/check3.cpp)
+add_executable(YellowBelt 5thWeek/refactoring1.cpp)
